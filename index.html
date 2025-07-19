@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Pranitha!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to top, #ffecd2 0%, #fcb69f 100%);
+      text-align: center;
+      padding: 30px 20px;
+      margin: 0;
+      color: #333;
+    }
+
+    .card {
+      background: #ffe6e6;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #ff3366;
+      font-size: 24px;
+    }
+
+    .special-message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .special-message.blue {
+      color: #1e90ff;
+    }
+
+    .special-message.orange {
+      color: orange;
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    #playMusicBtn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 15px 30px;
+      background: #ff3366;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 22px;
+      font-family: 'Dancing Script', cursive;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+      animation: pulse 1.5s infinite;
+    }
+    #playMusicBtn:hover { background: #f76c9e; }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 #ff336677; }
+      70% { box-shadow: 0 0 0 16px #ff336600; }
+      100% { box-shadow: 0 0 0 0 #ff336600; }
+    }
+
+    audio { display: none; }
+    @media (max-width: 500px) {
+      h1 { font-size: 20px; }
+      .special-message { font-size: 18px; }
+      #playMusicBtn { font-size: 18px; padding: 13px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🎈 Happy Birthday, Pranitha! 🎈</h1>
+    <p class="special-message blue">Wishing you a year filled with love, laughter, and success.</p>
+    <p class="special-message orange">May all your dreams come true!</p>
+    <img class="main-image" src="https://i.postimg.cc/g2780VKn/Birthday-Wishes-Pranitha.png" alt="Birthday Card">
+    <button id="playMusicBtn">🎵 Play Birthday Song</button>
+  </div>
+
+  <audio id="songAudio" loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Play music on button click
+    const playBtn = document.getElementById("playMusicBtn");
+    const music = document.getElementById("songAudio");
+
+    playBtn.addEventListener("click", async () => {
+      try {
+        await music.play();
+        playBtn.style.display = "none"; // Hide button after playing
+        console.log("🎶 Music is playing!");
+      } catch (e) {
+        alert("Couldn't play music: " + e.message);
+      }
+    });
+
+    // Confetti effect
+    function firework() {
+      confetti({
+        particleCount: 100,
+        spread: 100,
+        origin: { x: Math.random(), y: Math.random() * 0.6 }
+      });
+    }
+    setInterval(firework, 2000);
+  </script>
+
+</body>
+</html>
